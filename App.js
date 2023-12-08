@@ -1,13 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { Pressable, Text, View, TextInput, StyleSheet } from 'react-native';
+import { Pressable, Text, View, TextInput, StyleSheet, Image } from 'react-native';
+import titulo from "./assets/titulo.png"
+
 
 export default function App() {
   const [quantidade, setQuantidade] = useState('');
   const [kmrodado, setKmrodado] = useState('');
   const [resultado, setResultado] = useState('');
 
-  const valorLitro = 5.52; // Valor fixo em R$5.52
+  const valorLitro = 4.50; 
 
   const calcular = () => {
     if (quantidade === '' || kmrodado === '') {
@@ -19,11 +21,11 @@ export default function App() {
     const km = parseFloat(kmrodado);
 
     if (isNaN(quant) || isNaN(km)) {
-      alert('Valores inválidos. Certifique-se de usar números válidos.');
+      alert('Valores inválidos.');
       return;
     }
 
-    const consumo = km / (quant * valorLitro); // Calcula o consumo em km/l
+    const consumo = km / (quant * valorLitro);
     setResultado(consumo.toFixed(2));
   };
 
@@ -35,9 +37,15 @@ export default function App() {
 
   return (
     <View style={styles.container}>
+      
       <View style={styles.content}>
+      
         <View>
-          <Text style={styles.title}>Valor do litro (R$5.52)</Text>
+        <Image
+        style={{  height:'400px', width: '390px', alignItems: 'center', justifyContent: 'center', alignSelf: 'center'}}
+        source={titulo}
+      />
+          <Text style={styles.title}>Valor do litro (R$4.50)</Text>
         </View>
         <View>
           <Text>Quantidade Abastecida</Text>
@@ -51,7 +59,7 @@ export default function App() {
           </View>
         </View>
         <View>
-          <Text>Kilômetros Rodados</Text>
+          <Text>Quilômetros Rodados</Text>
           <View style={styles.input}>
             <TextInput
               value={kmrodado}
@@ -85,6 +93,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: '#CDE7FF',
   },
   content: {
     width: '80%',
@@ -96,8 +105,8 @@ const styles = StyleSheet.create({
   },
   input: {
     borderWidth: 1,
-    borderColor: 'black',
-    borderRadius: 5,
+    borderColor: 'white',
+    borderRadius: 8,
     padding: 5,
     marginTop: 5,
   },
@@ -105,8 +114,8 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   pressable: {
-    backgroundColor: '#86ee86',
-    borderRadius: 5,
+    backgroundColor: '#AFD0EE',
+    borderRadius: 8,
     padding: 10,
     alignItems: 'center',
     marginTop: 10,
