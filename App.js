@@ -45,7 +45,7 @@ export default function App() {
         style={{  height:'400px', width: '390px', alignItems: 'center', justifyContent: 'center', alignSelf: 'center'}}
         source={titulo}
       />
-          <Text style={styles.title}>Valor do litro (R$4.50)</Text>
+          <Text style={styles.title}>Valor do combustível  (R$4.50)</Text>
         </View>
         <View>
           <Text>Quantidade Abastecida</Text>
@@ -102,6 +102,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold',
     marginTop: 10,
+    textAlign: 'center',
   },
   input: {
     borderWidth: 1,
